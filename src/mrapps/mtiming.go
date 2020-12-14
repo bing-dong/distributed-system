@@ -7,14 +7,16 @@ package main
 // go build -buildmode=plugin mtiming.go
 //
 
-import "../mr"
-import "strings"
-import "fmt"
-import "os"
-import "syscall"
-import "time"
-import "sort"
-import "io/ioutil"
+import (
+	"distr/mr"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"sort"
+	"strings"
+	"syscall"
+	"time"
+)
 
 func nparallel(phase string) int {
 	// create a file so that other workers will see that
@@ -45,7 +47,7 @@ func nparallel(phase string) int {
 			err := syscall.Kill(xpid, 0)
 			if err == nil {
 				// if err == nil, xpid is alive.
-				ret += 1
+				ret++
 			}
 		}
 	}
@@ -61,6 +63,7 @@ func nparallel(phase string) int {
 	return ret
 }
 
+// Map map
 func Map(filename string, contents string) []mr.KeyValue {
 	t0 := time.Now()
 	ts := float64(t0.Unix()) + (float64(t0.Nanosecond()) / 1000000000.0)
@@ -78,6 +81,7 @@ func Map(filename string, contents string) []mr.KeyValue {
 	return kva
 }
 
+// Reduce reduce
 func Reduce(key string, values []string) string {
 	//n := nparallel("reduce")
 

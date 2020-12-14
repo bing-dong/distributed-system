@@ -8,7 +8,7 @@ package main
 // go build -buildmode=plugin crash.go
 //
 
-import "../mr"
+import "distr/mr"
 import crand "crypto/rand"
 import "math/big"
 import "strings"
@@ -31,6 +31,7 @@ func maybeCrash() {
 	}
 }
 
+// Map map
 func Map(filename string, contents string) []mr.KeyValue {
 	maybeCrash()
 
@@ -42,6 +43,7 @@ func Map(filename string, contents string) []mr.KeyValue {
 	return kva
 }
 
+// Reduce reduce
 func Reduce(key string, values []string) string {
 	maybeCrash()
 

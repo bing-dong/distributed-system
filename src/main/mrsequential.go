@@ -7,14 +7,14 @@ package main
 //
 
 import "fmt"
-import "../mr"
+import "distr/mr"
 import "plugin"
 import "os"
 import "log"
 import "io/ioutil"
 import "sort"
 
-// for sorting by key.
+//ByKey for sorting by key.
 type ByKey []mr.KeyValue
 
 // for sorting by key.

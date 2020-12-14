@@ -6,13 +6,15 @@ package main
 // go build -buildmode=plugin nocrash.go
 //
 
-import "../mr"
-import crand "crypto/rand"
-import "math/big"
-import "strings"
-import "os"
-import "sort"
-import "strconv"
+import (
+	crand "crypto/rand"
+	"distr/mr"
+	"math/big"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+)
 
 func maybeCrash() {
 	max := big.NewInt(1000)
@@ -23,6 +25,7 @@ func maybeCrash() {
 	}
 }
 
+// Map map
 func Map(filename string, contents string) []mr.KeyValue {
 	maybeCrash()
 
@@ -34,6 +37,7 @@ func Map(filename string, contents string) []mr.KeyValue {
 	return kva
 }
 
+// Reduce reduce
 func Reduce(key string, values []string) string {
 	maybeCrash()
 
